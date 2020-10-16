@@ -5,6 +5,7 @@
 - prettier
 - babel
 - stylus
+- dat.GUI
 
 ## Requirements
 You need to have <b>node.js</b> installed. 
@@ -26,3 +27,6 @@ Build the current application
 ```sh
 $ npm run build
 ```
+
+## Debug
+Go to your-url/#debug
