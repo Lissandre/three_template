@@ -1,7 +1,7 @@
 {
-  "name": "webpack_boilerplate",
-  "version": "2.0.0",
-  "description": "Webpack boilerplate",
+  "name": "three_boilerplate",
+  "version": "1.0.0",
+  "description": "Three boilerplate",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
@@ -46,10 +46,10 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Lissandre/webpack-template.git"
+    "url": "git+https://github.com/Lissandre/three-template.git"
   },
   "bugs": {
-    "url": "https://github.com/Lissandre/webpack-template/issues"
+    "url": "https://github.com/Lissandre/three-template/issues"
   },
-  "homepage": "https://github.com/Lissandre/webpack-template#readme"
+  "homepage": "https://github.com/Lissandre/three-template#readme"
 }
