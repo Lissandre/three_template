@@ -1,4 +1,4 @@
-# WEBPACK TEMPLATE
+# THREE.js TEMPLATE
 
 ## Features
 - eslint

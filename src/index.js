@@ -1,4 +1,6 @@
-import './css/common.styl'
-import Classname from './js/Classname.js'
+import './style/common.styl'
+import App from './js/App.js'
 
-new Classname()
+new App({
+  canvas: document.querySelector('#_canvas'),
+})
