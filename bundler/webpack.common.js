@@ -23,7 +23,7 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
-            options: { outputPath: 'images/' },
+            options: { outputPath: 'assets/images/' },
           },
         ],
       },
@@ -32,7 +32,7 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
-            options: { outputPath: 'fonts/' },
+            options: { outputPath: 'assets/fonts/' },
           },
         ],
       },
@@ -41,8 +41,44 @@ module.exports = {
         use: ['html-loader'],
       },
       {
-        test: /\.js$/,
+        test: /\.(js)$/,
+        exclude: /node_modules/,
         use: ['babel-loader'],
+      },
+      {
+        test: /\.(fbx|glb|obj|3ds|gltf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: { outputPath: 'assets/models/' },
+          },
+        ],
+      },
+      {
+        test: /\.(mp3|wav)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: { outputPath: 'assets/audios/' }
+          },
+        ]
+      },
+      {
+        test: /\.(mp4|webm)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: { outputPath: 'assets/videos/' }
+          },
+        ]
+      },
+      {
+        test: /\.(glsl|vs|fs|vert|frag)$/,
+        exclude: /node_modules/,
+        use: [
+          'raw-loader',
+          'glslify-loader'
+        ]
       },
     ],
   },

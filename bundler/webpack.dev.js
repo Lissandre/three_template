@@ -17,7 +17,7 @@ module.exports = webpackMerge.merge(
     module: {
       rules: [
         {
-          test: /\.styl$/,
+          test: /\.(styl|css)$/,
           use: [
             'style-loader',
             'css-loader',
