@@ -30,7 +30,7 @@
     "style-loader": "^2.0.0",
     "stylus": "^0.54.8",
     "stylus-loader": "^4.2.0",
-    "three": "^0.121.1",
+    "three": "^0.122.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.11.0",
