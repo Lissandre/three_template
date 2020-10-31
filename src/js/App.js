@@ -28,7 +28,7 @@ export default class App {
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       alpha: true,
-      antialiasing: true,
+      antialias: true,
     })
     // Set background color
     this.renderer.setClearColor(0x212121, 1)
