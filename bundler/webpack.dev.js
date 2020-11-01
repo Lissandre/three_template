@@ -11,9 +11,15 @@ module.exports = webpackMerge.merge(
       new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
+      host: '0.0.0.0',
+      useLocalIp: true,
       contentBase: './dist',
       open: true,
-      hot: true
+      hot: true,
+      overlay: {
+        warnings: false,
+        errors: true
+      }
     },
     module: {
       rules: [

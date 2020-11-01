@@ -30,7 +30,9 @@ $ npm install
 ```
 
 ## Development
-Run the local webpack-dev-server with hotreload and autocompile on [http://localhost:8080/](http://localhost:8080/)
+Run the local webpack-dev-server with hotreload and autocompile on:
+- local: [http://localhost:8080/](http://localhost:8080/)
+- network: http://your-local-ip:8080
 ```sh
 $ npm run dev
 ```
