@@ -24,10 +24,11 @@
 You need to have **node.js** installed. 
 
 ## Setup
-Install dependencies
 ```sh
-$ npm install
+$ npm init
 ```
+This command will init a git repository on your machine, install dependencies and remove useless files and directories for your project.
+After that, this command won't be available anymore.
 
 ## Development
 Run the local webpack-dev-server with hotreload and autocompile on:

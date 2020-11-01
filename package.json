@@ -37,6 +37,7 @@
     "webpack-merge": "^5.2.0"
   },
   "scripts": {
+    "init": "sh ./init.sh",
     "build": "webpack --config ./bundler/webpack.prod.js",
     "watch": "webpack --watch --config ./bundler/webpack.prod.js",
     "dev": "webpack serve --config ./bundler/webpack.dev.js",
