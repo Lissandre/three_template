@@ -29,7 +29,6 @@ module.exports = {
       minify: true,
     }),
   ],
-  devtool: 'source-map',
   module: {
     rules: [
       {

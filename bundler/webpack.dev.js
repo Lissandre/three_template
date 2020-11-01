@@ -6,6 +6,7 @@ module.exports = webpackMerge.merge(
   commonConfiguration,
   {
     mode: 'development',
+    devtool: 'source-map',
     plugins: [
       new webpack.HotModuleReplacementPlugin()
     ],
