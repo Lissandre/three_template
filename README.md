@@ -6,6 +6,19 @@
 - babel
 - stylus
 - dat.GUI
+- alias
+
+## Alias
+- @: src/
+- @style: src/style/
+- @fonts: src/fonts/
+- @models: src/models/
+- @sounds: src/sounds/
+- @shaders: src/shaders/
+- @textures: src/textures/
+- @js: src/js/
+- @tools: src/js/Tools/
+- @world: src/js/World/
 
 ## Requirements
 You need to have <b>node.js</b> installed. 

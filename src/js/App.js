@@ -1,11 +1,11 @@
 import * as THREE from 'three'
 import * as dat from 'dat.gui'
 
-import Sizes from './Tools/Sizes.js'
-import Time from './Tools/Time.js'
+import Sizes from '@tools/Sizes.js'
+import Time from '@tools/Time.js'
 
 import Camera from './Camera.js'
-import World from './World/index.js'
+import World from '@world/index.js'
 
 export default class App {
   constructor(_options) {

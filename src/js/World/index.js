@@ -4,6 +4,7 @@ import AmbientLight from './AmbientLight.js'
 import PointLight from './PointLight.js'
 import Cube from './Cube.js'
 
+
 export default class World {
   constructor(_options) {
     // Set options

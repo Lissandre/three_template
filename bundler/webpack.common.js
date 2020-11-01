@@ -8,6 +8,20 @@ module.exports = {
     filename: 'bundle.[hash].js',
     path: path.resolve(__dirname, '../dist'),
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '../src/'),
+      '@fonts': path.resolve(__dirname, '../src/fonts/'),
+      '@style': path.resolve(__dirname, '../src/style/'),
+      '@models': path.resolve(__dirname, '../src/models/'),
+      '@shaders': path.resolve(__dirname, '../src/shaders/'),
+      '@sounds': path.resolve(__dirname, '../src/sounds/'),
+      '@textures': path.resolve(__dirname, '../src/textures/'),
+      '@js': path.resolve(__dirname, '../src/js/'),
+      '@tools': path.resolve(__dirname, '../src/js/Tools/'),
+      '@world': path.resolve(__dirname, '../src/js/World/'),
+    }
+  },
   plugins: [
     new CopyWebpackPlugin({ patterns: [{ from: 'static', to: 'dist' }] }),
     new HtmlWebpackPlugin({
@@ -47,6 +61,15 @@ module.exports = {
       },
       {
         test: /\.(fbx|glb|obj|3ds|gltf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: { outputPath: 'assets/models/' },
+          },
+        ],
+      },
+      {
+        test: /\.(bin)$/,
         use: [
           {
             loader: 'file-loader',
