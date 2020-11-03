@@ -19,7 +19,32 @@ module.exports = webpackMerge.merge(
       overlay: {
         warnings: false,
         errors: true
-      }
+      },
+      stats: {
+        assets: false,
+        builtAt: false,
+        children: false,
+        chunks: false,
+        chunkGroups: false,
+        chunkModules: false,
+        chunkOrigins: false,
+        colors: {
+          green: '\u001b[32m',
+        },
+        depth: false,
+        entrypoints: false,
+        env: false,
+        hash: false,
+        outputPath: false,
+        publicPath: false,
+        timings: false,
+        source: false,
+        reasons: false,
+        modules: false,
+        providedExports: false,
+        logging: 'info',
+        loggingTrace: false,
+      },
     },
     module: {
       rules: [
