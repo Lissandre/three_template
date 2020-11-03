@@ -7,6 +7,7 @@
 - stylus
 - dat.GUI
 - alias
+- init command
 
 ## Alias
 - **@**: ```src/```
