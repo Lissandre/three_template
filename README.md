@@ -44,3 +44,6 @@ Build the current application (default output in `dist/`).
 ```sh
 $ npm run build
 ```
+
+## Template link
+[https://github.com/Lissandre/three_template](https://github.com/Lissandre/three_template)
