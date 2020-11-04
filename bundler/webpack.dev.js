@@ -17,7 +17,7 @@ module.exports = webpackMerge.merge(
       open: true,
       hot: true,
       overlay: {
-        warnings: false,
+        warnings: true,
         errors: true
       },
       stats: {
