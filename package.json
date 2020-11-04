@@ -40,7 +40,7 @@
     "init": "sh ./init.sh",
     "build": "webpack --config ./bundler/webpack.prod.js",
     "watch": "webpack --watch --config ./bundler/webpack.prod.js",
-    "dev": "webpack serve --config ./bundler/webpack.dev.js",
+    "dev": "webpack serve --config ./bundler/webpack.dev.js --client-log-level warning",
     "lint": "eslint --ignore-path .eslintignore .",
     "lint:fix": "npm run lint -- --fix",
     "test": "echo \"Error: no test specified\" && exit 1"

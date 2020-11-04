@@ -22,7 +22,7 @@ module.exports = webpackMerge.merge(
       },
       stats: {
         assets: false,
-        builtAt: false,
+        builtAt: true,
         children: false,
         chunks: false,
         chunkGroups: false,
@@ -44,6 +44,7 @@ module.exports = webpackMerge.merge(
         providedExports: false,
         logging: 'info',
         loggingTrace: false,
+        version: false,
       },
     },
     module: {

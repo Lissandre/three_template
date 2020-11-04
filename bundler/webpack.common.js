@@ -23,7 +23,7 @@ module.exports = {
     }
   },
   plugins: [
-    new CopyWebpackPlugin({ patterns: [{ from: 'static', to: 'static' }] }),
+    new CopyWebpackPlugin({ patterns: [{ from: 'static', to: '' }] }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/index.html'),
       minify: true,
