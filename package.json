@@ -1,7 +1,7 @@
 {
-  "name": "three_boilerplate",
+  "name": "three_template",
   "version": "1.1.0",
-  "description": "Three boilerplate",
+  "description": "Three template",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
@@ -49,10 +49,10 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Lissandre/three-template.git"
+    "url": "git+https://github.com/Lissandre/three_template.git"
   },
   "bugs": {
-    "url": "https://github.com/Lissandre/three-template/issues"
+    "url": "https://github.com/Lissandre/three_template/issues"
   },
-  "homepage": "https://github.com/Lissandre/three-template#readme"
+  "homepage": "https://github.com/Lissandre/three_template#readme"
 }
