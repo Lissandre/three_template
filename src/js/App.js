@@ -3,18 +3,20 @@ import * as dat from 'dat.gui'
 
 import Sizes from '@tools/Sizes.js'
 import Time from '@tools/Time.js'
+import Models from '@models/Loader.js'
 
 import Camera from './Camera.js'
 import World from '@world/index.js'
 
 export default class App {
-  constructor(_options) {
+  constructor(options) {
     // Set options
-    this.canvas = _options.canvas
+    this.canvas = options.canvas
 
     // Set up
     this.time = new Time()
     this.sizes = new Sizes()
+    this.models = new Models()
 
     this.setConfig()
     this.setRenderer()
@@ -62,6 +64,7 @@ export default class App {
     this.world = new World({
       time: this.time,
       debug: this.debug,
+      models: this.models,
     })
     // Add world to scene
     this.scene.add(this.world.container)

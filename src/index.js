@@ -1,4 +1,4 @@
-import '@style/common.styl'
+import '@style/style.styl'
 import App from '@js/App.js'
 
 new App({

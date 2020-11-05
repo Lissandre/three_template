@@ -1,9 +1,9 @@
 import * as THREE from 'three'
 
 export default class PointLight {
-  constructor(_options) {
+  constructor(options) {
     // Set options
-    this.debug = _options.debug
+    this.debug = options.debug
 
     // Set up
     this.container = new THREE.Object3D()

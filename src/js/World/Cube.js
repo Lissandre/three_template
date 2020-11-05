@@ -1,10 +1,10 @@
 import * as THREE from 'three'
 
 export default class Cube {
-  constructor(_options) {
+  constructor(options) {
     // Options
-    this.time = _options.time
-    this.debug = _options.debug
+    this.time = options.time
+    this.debug = options.debug
 
     // Set up
     this.container = new THREE.Object3D()

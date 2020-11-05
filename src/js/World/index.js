@@ -5,10 +5,11 @@ import PointLight from './PointLight.js'
 import Cube from './Cube.js'
 
 export default class World {
-  constructor(_options) {
+  constructor(options) {
     // Set options
-    this.time = _options.time
-    this.debug = _options.debug
+    this.time = options.time
+    this.debug = options.debug
+    this.models = options.models
 
     // Set up
     this.container = new THREE.Object3D()
@@ -18,9 +19,29 @@ export default class World {
       this.debugFolder.open()
     }
 
+    this.getLoaders()
     this.setAmbientLight()
     this.setPointLight()
     this.setCube()
+  }
+  getLoaders() {
+    if (this.models.modelsList.length != 0) {
+      this.loadDiv = document.createElement('div')
+      this.loadDiv.classList.add('loadScreen')
+      document.body.append(this.loadDiv)
+
+      this.loadTitle = document.createElement('h1')
+      this.loadTitle.innerHTML = 'Loading models...'
+      this.loadTitle.classList.add('loadModels')
+      this.loadDiv.append(this.loadTitle)
+
+      this.models.on('modelsReady', () => {
+        this.loadDiv.style.opacity = 0
+        setTimeout(() => {
+          this.loadDiv.remove()
+        }, 320)
+      })
+    }
   }
   setAmbientLight() {
     this.light = new AmbientLight({

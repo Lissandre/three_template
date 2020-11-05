@@ -23,7 +23,12 @@ module.exports = {
     }
   },
   plugins: [
-    new CopyWebpackPlugin({ patterns: [{ from: 'static', to: '' }] }),
+    new CopyWebpackPlugin({ 
+      patterns: [
+        { from: 'static', to: '' },
+        { from: 'node_modules/three/examples/js/libs/draco/', to: './draco' }
+      ]
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/index.html'),
       minify: true,
