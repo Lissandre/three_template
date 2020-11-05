@@ -3,7 +3,7 @@ import * as dat from 'dat.gui'
 
 import Sizes from '@tools/Sizes.js'
 import Time from '@tools/Time.js'
-import Models from '@models/Loader.js'
+import Models from '@tools/ModelLoader.js'
 
 import Camera from './Camera.js'
 import World from '@world/index.js'

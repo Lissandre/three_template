@@ -1,5 +1,5 @@
 /**
- * IMPORT YOUR MODELS HERE
+ * Import your models here
  */
 import personnageSrc from './personnage.glb'
 

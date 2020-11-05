@@ -2,7 +2,7 @@ import * as THREE from 'three'
 
 import AmbientLight from './AmbientLight.js'
 import PointLight from './PointLight.js'
-import Cube from './Cube.js'
+import Human from './Human.js'
 
 export default class World {
   constructor(options) {
@@ -20,9 +20,6 @@ export default class World {
     }
 
     this.getLoaders()
-    this.setAmbientLight()
-    this.setPointLight()
-    this.setCube()
   }
   getLoaders() {
     if (this.models.modelsList.length != 0) {
@@ -37,6 +34,9 @@ export default class World {
 
       this.models.on('modelsReady', () => {
         this.loadDiv.style.opacity = 0
+        this.setAmbientLight()
+        this.setPointLight()
+        this.setHuman()
         setTimeout(() => {
           this.loadDiv.remove()
         }, 320)
@@ -55,11 +55,11 @@ export default class World {
     })
     this.container.add(this.light.container)
   }
-  setCube() {
-    this.cube = new Cube({
+  setHuman() {
+    this.human = new Human({
       time: this.time,
-      debug: this.debugFolder,
+      models: this.models
     })
-    this.container.add(this.cube.container)
+    this.container.add(this.human.container)
   }
 }

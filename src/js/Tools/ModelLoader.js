@@ -4,17 +4,21 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js'
 
+import modelsList from '@models/index.js'
 export default class ModelLoader extends EventEmitter {
   constructor() {
     // Get parent methods
     super()
 
     // Set up
+    this.modelsList = modelsList
+
     this.remaining = 0
     this.done = 0
     this.models = {}
 
     this.setLoaders()
+    this.startLoad()
   }
   setLoaders() {
     const dracoLoader = new DRACOLoader()
@@ -68,5 +72,11 @@ export default class ModelLoader extends EventEmitter {
     if(this.remaining === this.done){
         this.trigger('endModel')
     }
+  }
+  startLoad() {
+    this.loadModels(this.modelsList)
+    this.on('endModel', () => {
+      this.trigger('modelsReady')
+    })
   }
 }
