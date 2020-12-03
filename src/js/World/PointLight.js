@@ -8,9 +8,9 @@ export default class PointLight {
     // Set up
     this.container = new THREE.Object3D()
     this.params = {
-      color: 0xaa55aa,
+      color: 0xffffff,
       positionX: 0,
-      positionY: 1,
+      positionY: 2,
       positionZ: 5,
     }
 

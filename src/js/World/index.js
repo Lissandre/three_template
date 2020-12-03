@@ -2,7 +2,7 @@ import * as THREE from 'three'
 
 import AmbientLight from './AmbientLight.js'
 import PointLight from './PointLight.js'
-import Human from './Human.js'
+import Suzanne from './Suzanne.js'
 
 export default class World {
   constructor(options) {
@@ -36,7 +36,7 @@ export default class World {
         this.loadDiv.style.opacity = 0
         this.setAmbientLight()
         this.setPointLight()
-        this.setHuman()
+        this.setSuzanne()
         setTimeout(() => {
           this.loadDiv.remove()
         }, 320)
@@ -55,11 +55,11 @@ export default class World {
     })
     this.container.add(this.light.container)
   }
-  setHuman() {
-    this.human = new Human({
+  setSuzanne() {
+    this.suzanne = new Suzanne({
       time: this.time,
       models: this.models
     })
-    this.container.add(this.human.container)
+    this.container.add(this.suzanne.container)
   }
 }
