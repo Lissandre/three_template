@@ -1,7 +1,7 @@
-import * as THREE from 'three'
+import { Object3D } from 'three'
 
-import AmbientLight from './AmbientLight.js'
-import PointLight from './PointLight.js'
+import AmbientLightSource from './AmbientLight.js'
+import PointLightSource from './PointLight.js'
 import Suzanne from './Suzanne.js'
 
 export default class World {
@@ -12,7 +12,7 @@ export default class World {
     this.models = options.models
 
     // Set up
-    this.container = new THREE.Object3D()
+    this.container = new Object3D()
 
     if (this.debug) {
       this.debugFolder = this.debug.addFolder('World')
@@ -44,13 +44,13 @@ export default class World {
     }
   }
   setAmbientLight() {
-    this.light = new AmbientLight({
+    this.light = new AmbientLightSource({
       debug: this.debugFolder,
     })
     this.container.add(this.light.container)
   }
   setPointLight() {
-    this.light = new PointLight({
+    this.light = new PointLightSource({
       debug: this.debugFolder,
     })
     this.container.add(this.light.container)

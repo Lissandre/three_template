@@ -1,12 +1,12 @@
-import * as THREE from 'three'
+import { Object3D, SpotLight, Color } from 'three'
 
-export default class PointLight {
+export default class PointLightSource {
   constructor(options) {
     // Set options
     this.debug = options.debug
 
     // Set up
-    this.container = new THREE.Object3D()
+    this.container = new Object3D()
     this.params = {
       color: 0xffffff,
       positionX: 0,
@@ -21,7 +21,7 @@ export default class PointLight {
     }
   }
   createPointLight() {
-    this.light = new THREE.SpotLight(this.params.color)
+    this.light = new SpotLight(this.params.color)
     this.light.castShadow = true
     this.light.position.set(
       this.params.positionX,
@@ -38,7 +38,7 @@ export default class PointLight {
       .addColor(this.params, 'color')
       .name('Color')
       .onChange(() => {
-        this.light.color = new THREE.Color(this.params.color)
+        this.light.color = new Color(this.params.color)
       })
     //Position debug
     this.debugFolder

@@ -1,4 +1,4 @@
-import * as THREE from 'three'
+import { Object3D, PerspectiveCamera } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 export default class Camera {
@@ -9,7 +9,7 @@ export default class Camera {
     this.debug = options.debug
 
     // Set up
-    this.container = new THREE.Object3D()
+    this.container = new Object3D()
 
     this.setCamera()
     this.setPosition()
@@ -17,7 +17,7 @@ export default class Camera {
   }
   setCamera() {
     // Create camera
-    this.camera = new THREE.PerspectiveCamera(
+    this.camera = new PerspectiveCamera(
       75,
       this.sizes.viewport.width / this.sizes.viewport.height,
       0.1,

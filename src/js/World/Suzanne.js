@@ -1,4 +1,4 @@
-import * as THREE from 'three'
+import { Object3D } from 'three'
 
 export default class Suzanne {
   constructor(options) {
@@ -7,7 +7,7 @@ export default class Suzanne {
     this.models = options.models
 
     // Set up
-    this.container = new THREE.Object3D()
+    this.container = new Object3D()
 
     this.createSuzanne()
     this.setMovement()

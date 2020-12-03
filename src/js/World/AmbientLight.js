@@ -1,12 +1,12 @@
-import * as THREE from 'three'
+import { Object3D, AmbientLight, Color } from 'three'
 
-export default class AmbientLight {
+export default class AmbientLightSource {
   constructor(options) {
     // Set options
     this.debug = options.debug
 
     // Set up
-    this.container = new THREE.Object3D()
+    this.container = new Object3D()
     this.params = { color: 0x232323 }
 
     this.createAmbientLight()
@@ -16,7 +16,7 @@ export default class AmbientLight {
     }
   }
   createAmbientLight() {
-    this.light = new THREE.AmbientLight(this.params.color)
+    this.light = new AmbientLight(this.params.color)
     this.container.add(this.light)
   }
   setDebug() {
@@ -26,7 +26,7 @@ export default class AmbientLight {
       .addColor(this.params, 'color')
       .name('Color')
       .onChange(() => {
-        this.light.color = new THREE.Color(this.params.color)
+        this.light.color = new Color(this.params.color)
       })
   }
 }

@@ -1,4 +1,4 @@
-import * as THREE from 'three'
+import { Scene, WebGLRenderer } from 'three'
 import * as dat from 'dat.gui'
 
 import Sizes from '@tools/Sizes.js'
@@ -25,9 +25,9 @@ export default class App {
   }
   setRenderer() {
     // Set scene
-    this.scene = new THREE.Scene()
+    this.scene = new Scene()
     // Set renderer
-    this.renderer = new THREE.WebGLRenderer({
+    this.renderer = new WebGLRenderer({
       canvas: this.canvas,
       alpha: true,
       antialias: true,
