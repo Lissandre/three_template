@@ -1,13 +1,13 @@
 import * as THREE from 'three'
 
 export default class AmbientLight {
-  constructor(_options) {
+  constructor(options) {
     // Set options
-    this.debug = _options.debug
+    this.debug = options.debug
 
     // Set up
     this.container = new THREE.Object3D()
-    this.params = { color: 0x555555 }
+    this.params = { color: 0x232323 }
 
     this.createAmbientLight()
 

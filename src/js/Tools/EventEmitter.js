@@ -1,3 +1,4 @@
+// Steal from https://github.com/brunosimon/folio-2019
 export default class {
   constructor() {
     this.callbacks = {}

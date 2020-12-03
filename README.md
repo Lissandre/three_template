@@ -38,6 +38,7 @@ Go to your-url/#debug
 - babel
 - stylus
 - dat.GUI
+- models import
 
 ## Deployment
 Build the current application (default output in `dist/`).

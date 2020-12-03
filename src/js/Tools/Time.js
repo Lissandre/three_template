@@ -1,3 +1,4 @@
+// Steal from https://github.com/brunosimon/folio-2019
 import EventEmitter from './EventEmitter.js'
 
 export default class Time extends EventEmitter {
@@ -17,7 +18,10 @@ export default class Time extends EventEmitter {
   // on('tick')
   tick() {
     // Call tick method on each frame
-    window.requestAnimationFrame(this.tick)
+    setTimeout(() => {
+      window.requestAnimationFrame(this.tick)
+      this.trigger('tick')
+    }, 1000 / 60)
 
     // Get current time
     const current = Date.now()

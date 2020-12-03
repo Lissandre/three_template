@@ -1,16 +1,16 @@
 import * as THREE from 'three'
 
 export default class PointLight {
-  constructor(_options) {
+  constructor(options) {
     // Set options
-    this.debug = _options.debug
+    this.debug = options.debug
 
     // Set up
     this.container = new THREE.Object3D()
     this.params = {
-      color: 0xaa55aa,
+      color: 0xffffff,
       positionX: 0,
-      positionY: 1,
+      positionY: 2,
       positionZ: 5,
     }
 
