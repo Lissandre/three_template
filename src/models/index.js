@@ -1,10 +1,10 @@
 /**
  * Import your models here
  */
-import personnageSrc from './personnage.glb'
+import suzanneSrc from './suzanne.glb'
 
 const modelsList = [
-  { name: 'personnage', src: personnageSrc},
+  { name: 'suzanne', src: suzanneSrc},
 ]
 
 /**

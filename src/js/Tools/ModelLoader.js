@@ -15,7 +15,7 @@ export default class ModelLoader extends EventEmitter {
 
     this.remaining = 0
     this.done = 0
-    this.models = {}
+    this.src = {}
 
     this.setLoaders()
     this.startLoad()
@@ -67,7 +67,7 @@ export default class ModelLoader extends EventEmitter {
   }
   loadComplete(model, loaded) {
     this.done ++
-    this.models[model.name] = loaded
+    this.src[model.name] = loaded
     this.trigger('modelLoad', [model, loaded])
     if(this.remaining === this.done){
         this.trigger('endModel')
