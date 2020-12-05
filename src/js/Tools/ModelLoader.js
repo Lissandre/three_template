@@ -11,7 +11,15 @@ export default class ModelLoader extends EventEmitter {
 
     // Set up
     this.modelsList = []
+    this.remaining = 0
+    this.done = 0
+    this.src = {}
 
+    this.setModelsList()
+    this.setLoaders()
+    this.startLoad()
+  }
+  setModelsList() {
     // eslint-disable-next-line
     const context = require.context('@models', true, /\.(glb|gltf|fbx)$/)
     context.keys().forEach((key) => {
@@ -26,13 +34,6 @@ export default class ModelLoader extends EventEmitter {
         src: modelSrc.default,
       })
     })
-
-    this.remaining = 0
-    this.done = 0
-    this.src = {}
-
-    this.setLoaders()
-    this.startLoad()
   }
   setLoaders() {
     const dracoLoader = new DRACOLoader()
@@ -85,7 +86,7 @@ export default class ModelLoader extends EventEmitter {
   }
   loadComplete(model, loaded) {
     this.done++
-    this.src[model.name] = loaded
+    this.createNestedObject( this.src, model.name.split('/'), loaded )
     this.trigger('modelLoad', [model, loaded])
     if (this.remaining === this.done) {
       this.trigger('endModel')
@@ -96,5 +97,13 @@ export default class ModelLoader extends EventEmitter {
     this.on('endModel', () => {
       this.trigger('modelsReady')
     })
+  }
+  createNestedObject( base, names, value ) {
+    var lastName = arguments.length === 3 ? names.pop() : false
+    for( var i = 0; i < names.length; i++ ) {
+        base = base[ names[i] ] = base[ names[i] ] || {}
+    }
+    if( lastName ) base = base[ lastName ] = value
+    return base
   }
 }

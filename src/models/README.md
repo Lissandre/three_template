@@ -5,4 +5,7 @@ The name of your file will be used to name the variable that will contains your 
 
 Example:
 Take a look at `js/World/Suzanne.js`:
-With a file `suzanne.glb`, you can acces your model with `this.models.src.suzanne`
+With a file `suzanne.glb`, you can access your model with `this.models.suzanne`
+
+You can also organize your models with different directories.
+For example, `./models/any/path/to/suzanne.glb` find it's access with `this.models.any.path.to.suzanne`
