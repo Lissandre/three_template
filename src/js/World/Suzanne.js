@@ -13,7 +13,7 @@ export default class Suzanne {
     this.setMovement()
   }
   createSuzanne() {
-    this.suzanne = this.models.src.suzanne.scene
+    this.suzanne = this.models.suzanne.scene
     this.container.add(this.suzanne)
   }
   setMovement() {

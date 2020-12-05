@@ -107,6 +107,13 @@ module.exports = {
           'glslify-loader'
         ]
       },
+      {
+        test: /\.(md)$/,
+        exclude: /node_modules/,
+        use: [
+          'file-loader'
+        ]
+      },
     ],
   },
 }

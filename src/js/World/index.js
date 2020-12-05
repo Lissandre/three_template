@@ -58,7 +58,7 @@ export default class World {
   setSuzanne() {
     this.suzanne = new Suzanne({
       time: this.time,
-      models: this.models
+      models: this.models.src,
     })
     this.container.add(this.suzanne.container)
   }
