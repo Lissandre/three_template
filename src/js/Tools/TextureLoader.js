@@ -20,19 +20,23 @@ export default class TextureLoaderClass extends EventEmitter {
   setTexturesList() {
     // eslint-disable-next-line
     const context = require.context('@textures', true, /\.(jpg|png|jpeg)$/)
-    context.keys().forEach((key) => {
-      const newKey = `${key}`.substring(2)
-      // eslint-disable-next-line
-      const textureSrc = require('../../textures/' + newKey)
-      this.texturesList.push({
-        name: key.substring(
-          2,
-          key.length - (key.length - newKey.lastIndexOf('.') - 2)
-        ),
-        src: textureSrc.default,
+    if (context.keys().length === 0) {
+      this.texturesReady = true
+    } else {
+      context.keys().forEach((key) => {
+        const newKey = `${key}`.substring(2)
+        // eslint-disable-next-line
+        const textureSrc = require('../../textures/' + newKey)
+        this.texturesList.push({
+          name: key.substring(
+            2,
+            key.length - (key.length - newKey.lastIndexOf('.') - 2)
+          ),
+          src: textureSrc.default,
+        })
       })
-    })
-    this.loadTextures(this.texturesList)
+      this.loadTextures(this.texturesList)
+    }
   }
   loadTextures(textures) {
     textures.forEach((texture) => {

@@ -21,19 +21,23 @@ export default class ModelLoaderClass extends EventEmitter {
   setModelsList() {
     // eslint-disable-next-line
     const context = require.context('@models', true, /\.(glb|gltf|fbx)$/)
-    context.keys().forEach((key) => {
-      const newKey = `${key}`.substring(2)
-      // eslint-disable-next-line
-      const modelSrc = require('../../models/' + newKey)
-      this.modelsList.push({
-        name: key.substring(
-          2,
-          key.length - (key.length - newKey.lastIndexOf('.') - 2)
-        ),
-        src: modelSrc.default,
+    if (context.keys().length === 0) {
+      this.modelsReady = true
+    } else {
+      context.keys().forEach((key) => {
+        const newKey = `${key}`.substring(2)
+        // eslint-disable-next-line
+        const modelSrc = require('../../models/' + newKey)
+        this.modelsList.push({
+          name: key.substring(
+            2,
+            key.length - (key.length - newKey.lastIndexOf('.') - 2)
+          ),
+          src: modelSrc.default,
+        })
       })
-    })
-    this.loadModels(this.modelsList)
+      this.loadModels(this.modelsList)
+    }
   }
   setLoaders() {
     const dracoLoader = new DRACOLoader()

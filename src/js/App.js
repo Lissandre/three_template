@@ -19,7 +19,6 @@ export default class App {
     this.sizes = new Sizes()
     this.models = new Models()
     this.textures = new Textures()
-    console.log(this.textures.src)
 
     this.setConfig()
     this.setRenderer()
@@ -68,6 +67,7 @@ export default class App {
       time: this.time,
       debug: this.debug,
       models: this.models,
+      textures: this.textures,
     })
     // Add world to scene
     this.scene.add(this.world.container)

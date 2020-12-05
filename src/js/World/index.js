@@ -10,6 +10,7 @@ export default class World {
     this.time = options.time
     this.debug = options.debug
     this.models = options.models
+    this.textures = options.textures
 
     // Set up
     this.container = new Object3D()
@@ -19,24 +20,65 @@ export default class World {
       this.debugFolder.open()
     }
 
-    this.getLoaders()
+    this.setLoader()
   }
-  getLoaders() {
-    if (this.models.modelsList.length != 0) {
-      this.loadDiv = document.createElement('div')
-      this.loadDiv.classList.add('loadScreen')
-      document.body.append(this.loadDiv)
+  init() {
+    this.setAmbientLight()
+    this.setPointLight()
+    this.setSuzanne()
+  }
+  setLoader() {
+    this.modelsLoaded = false
+    this.texturesLoaded = false
 
-      this.loadTitle = document.createElement('h1')
-      this.loadTitle.innerHTML = 'Loading models...'
-      this.loadTitle.classList.add('loadModels')
-      this.loadDiv.append(this.loadTitle)
+    this.loadDiv = document.createElement('div')
+    this.loadDiv.classList.add('loadScreen')
+    document.body.append(this.loadDiv)
 
+    this.loadModels = document.createElement('h1')
+    this.loadModels.innerHTML = 'Loading models...'
+    this.loadModels.classList.add('load')
+    this.loadDiv.append(this.loadModels)
+
+    this.loadTextures = document.createElement('h1')
+    this.loadTextures.innerHTML = 'Loading textures...'
+    this.loadTextures.classList.add('load')
+    this.loadDiv.append(this.loadTextures)
+
+    if(this.models.modelsReady){
+      this.modelsLoaded = true
+      this.loadModels.innerHTML = 'Models ok'
+      this.checkLoad()
+    } else {
       this.models.on('modelsReady', () => {
+        this.modelsLoaded = true
+        this.loadModels.innerHTML = 'Models ok'
+        this.checkLoad()
+      })
+    }
+
+    if (this.textures.texturesReady) {
+      this.texturesLoaded = true
+      this.loadTextures.innerHTML = 'Textures ok'
+      this.checkLoad()
+    } else {
+      this.textures.on('texturesReady', () => {
+        this.texturesLoaded = true
+        this.loadTextures.innerHTML = 'Textures ok'
+        this.checkLoad()
+      })
+    }
+  }
+  checkLoad() {
+    if (this.modelsLoaded === this.texturesLoaded === true) {
+      this.enter = document.createElement('button')
+      this.enter.innerHTML = 'Start'
+      this.enter.classList.add('start')
+      this.loadDiv.append(this.enter)
+
+      this.enter.addEventListener('click', () => {
+        this.init()
         this.loadDiv.style.opacity = 0
-        this.setAmbientLight()
-        this.setPointLight()
-        this.setSuzanne()
         setTimeout(() => {
           this.loadDiv.remove()
         }, 320)
