@@ -4,7 +4,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js'
 
-export default class ModelLoader extends EventEmitter {
+export default class ModelLoaderClass extends EventEmitter {
   constructor() {
     // Get parent methods
     super()

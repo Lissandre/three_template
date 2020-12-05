@@ -4,6 +4,7 @@ import * as dat from 'dat.gui'
 import Sizes from '@tools/Sizes.js'
 import Time from '@tools/Time.js'
 import Models from '@tools/ModelLoader.js'
+import Textures from '@tools/TextureLoader.js'
 
 import Camera from './Camera.js'
 import World from '@world/index.js'
@@ -17,6 +18,8 @@ export default class App {
     this.time = new Time()
     this.sizes = new Sizes()
     this.models = new Models()
+    this.textures = new Textures()
+    console.log(this.textures.src)
 
     this.setConfig()
     this.setRenderer()
