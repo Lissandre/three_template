@@ -45,6 +45,11 @@ export default class World {
     this.loadTextures.classList.add('load')
     this.loadDiv.append(this.loadTextures)
 
+    this.enter = document.createElement('button')
+    this.enter.innerHTML = '...'
+    this.enter.classList.add('start')
+    this.loadDiv.append(this.enter)
+
     if(this.models.modelsReady){
       this.modelsLoaded = true
       this.loadModels.innerHTML = 'Models ok'
@@ -71,10 +76,7 @@ export default class World {
   }
   checkLoad() {
     if (this.modelsLoaded === this.texturesLoaded === true) {
-      this.enter = document.createElement('button')
       this.enter.innerHTML = 'Start'
-      this.enter.classList.add('start')
-      this.loadDiv.append(this.enter)
 
       this.enter.addEventListener('click', () => {
         this.init()
