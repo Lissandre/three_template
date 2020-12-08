@@ -27,31 +27,21 @@ export default class World {
     this.setSuzanne()
   }
   setLoader() {
-    this.loadDiv = document.createElement('div')
-    this.loadDiv.classList.add('loadScreen')
-    document.body.append(this.loadDiv)
+    this.loadDiv = document.querySelector('.loadScreen')
+    this.loadModels = this.loadDiv.querySelector('.load')
 
-    this.loadModels = document.createElement('h1')
-    this.loadModels.innerHTML = 'Loading'
-    this.loadModels.classList.add('load')
-    this.loadDiv.append(this.loadModels)
-
-    this.enter = document.createElement('button')
-    this.enter.innerHTML = '...'
-    this.enter.classList.add('start')
-    this.loadDiv.append(this.enter)
+    this.assets.on('ressourceLoad', () => {
+      this.loadModels.innerHTML = `${Math.ceil(this.assets.done / this.assets.total * 100)}%`
+    })
 
     this.assets.on('ressourcesReady', () => {
-      this.loadModels.innerHTML = 'OK'
-      this.enter.innerHTML = 'Start'
-
-      this.enter.addEventListener('click', () => {
+      setTimeout(() => {
         this.init()
         this.loadDiv.style.opacity = 0
         setTimeout(() => {
           this.loadDiv.remove()
-        }, 320)
-      })
+        }, 1320)
+      }, 1000)
     })
   }
   setAmbientLight() {
