@@ -10,6 +10,7 @@ export default class Camera {
 
     // Set up
     this.container = new Object3D()
+    this.container.name = 'Camera'
 
     this.setCamera()
     this.setPosition()

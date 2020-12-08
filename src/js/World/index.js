@@ -1,4 +1,4 @@
-import { Object3D } from 'three'
+import { AxesHelper, Object3D } from 'three'
 
 import AmbientLightSource from './AmbientLight.js'
 import PointLightSource from './PointLight.js'
@@ -13,8 +13,10 @@ export default class World {
 
     // Set up
     this.container = new Object3D()
+    this.container.name = 'World'
 
     if (this.debug) {
+      this.container.add(new AxesHelper(5))
       this.debugFolder = this.debug.addFolder('World')
       this.debugFolder.open()
     }

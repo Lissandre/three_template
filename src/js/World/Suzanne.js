@@ -8,6 +8,7 @@ export default class Suzanne {
 
     // Set up
     this.container = new Object3D()
+    this.container.name = 'Suzanne'
 
     this.createSuzanne()
     this.setMovement()
