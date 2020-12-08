@@ -22,6 +22,75 @@ export default class Loader extends EventEmitter {
     this.setLoaders()
     this.setRessourcesList()
   }
+  setLoaders() {
+    const dracoLoader = new DRACOLoader()
+    dracoLoader.setDecoderPath('./draco/')
+    dracoLoader.setDecoderConfig({ type: 'js' })
+
+    const gltfLoader = new GLTFLoader()
+    gltfLoader.setDRACOLoader(dracoLoader)
+
+    const fbxLoader = new FBXLoader()
+
+    const textureLoader = new TextureLoader()
+
+    this.loaders = [
+      {
+        filetype: ['gltf', 'glb'],
+        action: (model) => {
+          gltfLoader.load(
+            model.src,
+            (loaded) => {
+              this.loadComplete(model, loaded)
+            },
+            (xhr) => {
+              this.currentPercent = Math.floor((xhr.loaded / xhr.total) * 100)
+              if (this.currentPercent === 100) {
+                this.currentPercent = 0
+              }
+              this.trigger('ressourceLoad')
+            }
+          )
+        },
+      },
+      {
+        filetype: ['fbx'],
+        action: (model) => {
+          fbxLoader.load(
+            model.src,
+            (loaded) => {
+              this.loadComplete(model, loaded)
+            },
+            (xhr) => {
+              this.currentPercent = Math.floor((xhr.loaded / xhr.total) * 100)
+              if (this.currentPercent === 100) {
+                this.currentPercent = 0
+              }
+              this.trigger('ressourceLoad')
+            }
+          )
+        },
+      },
+      {
+        filetype: ['png', 'jpg', 'jpeg'],
+        action: (texture) => {
+          textureLoader.load(
+            texture.src,
+            (loaded) => {
+              this.loadComplete(texture, loaded)
+            },
+            (xhr) => {
+              this.currentPercent = Math.floor((xhr.loaded / xhr.total) * 100)
+              if (this.currentPercent === 100) {
+                this.currentPercent = 0
+              }
+              this.trigger('ressourceLoad')
+            }
+          )
+        },
+      },
+    ]
+  }
   setRessourcesList() {
     // eslint-disable-next-line
     const modelsContext = require.context('@models', true, /\.(glb|gltf|fbx)$/)
@@ -54,75 +123,6 @@ export default class Loader extends EventEmitter {
       })
     })
     this.loadRessources(this.ressourcesList)
-  }
-  setLoaders() {
-    const dracoLoader = new DRACOLoader()
-    dracoLoader.setDecoderPath('./draco/')
-    dracoLoader.setDecoderConfig({ type: 'js' })
-
-    const gltfLoader = new GLTFLoader()
-    gltfLoader.setDRACOLoader(dracoLoader)
-
-    const fbxLoader = new FBXLoader()
-
-    const textureLoader = new TextureLoader()
-
-    this.loaders = [
-      {
-        filetype: ['gltf', 'glb'],
-        action: (model) => {
-          gltfLoader.load(
-            model.src,
-            (loaded) => {
-              this.loadComplete(model, loaded)
-            },
-            (xhr) => {
-              this.currentPercent = Math.ceil((xhr.loaded / xhr.total) * 100)
-              if (this.currentPercent === 100) {
-                this.currentPercent = 0
-              }
-              this.trigger('ressourceLoad')
-            }
-          )
-        },
-      },
-      {
-        filetype: ['fbx'],
-        action: (model) => {
-          fbxLoader.load(
-            model.src,
-            (loaded) => {
-              this.loadComplete(model, loaded)
-            },
-            (xhr) => {
-              this.currentPercent = Math.ceil((xhr.loaded / xhr.total) * 100)
-              if (this.currentPercent === 100) {
-                this.currentPercent = 0
-              }
-              this.trigger('ressourceLoad')
-            }
-          )
-        },
-      },
-      {
-        filetype: ['png', 'jpg', 'jpeg'],
-        action: (texture) => {
-          textureLoader.load(
-            texture.src,
-            (loaded) => {
-              this.loadComplete(texture, loaded)
-            },
-            (xhr) => {
-              this.currentPercent = Math.ceil((xhr.loaded / xhr.total) * 100)
-              if (this.currentPercent === 100) {
-                this.currentPercent = 0
-              }
-              this.trigger('ressourceLoad')
-            }
-          )
-        },
-      },
-    ]
   }
   loadRessources(ressources) {
     ressources.forEach((ressource) => {

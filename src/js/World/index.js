@@ -29,12 +29,17 @@ export default class World {
   setLoader() {
     this.loadDiv = document.querySelector('.loadScreen')
     this.loadModels = this.loadDiv.querySelector('.load')
+    this.progress = this.loadDiv.querySelector('.progress')
 
     if (this.assets.total === 0) {
       this.init()
       this.loadDiv.remove()
     } else {
       this.assets.on('ressourceLoad', () => {
+        this.progress.style.width = `${
+          Math.floor((this.assets.done / this.assets.total) * 100) +
+          Math.floor((1 / this.assets.total) * this.assets.currentPercent)
+        }%`
         this.loadModels.innerHTML = `${
           Math.floor((this.assets.done / this.assets.total) * 100) +
           Math.floor((1 / this.assets.total) * this.assets.currentPercent)
@@ -47,7 +52,7 @@ export default class World {
           this.loadDiv.style.opacity = 0
           setTimeout(() => {
             this.loadDiv.remove()
-          }, 1320)
+          }, 550)
         }, 1000)
       })
     }
