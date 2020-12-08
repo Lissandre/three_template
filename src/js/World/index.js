@@ -1,8 +1,8 @@
 import { AxesHelper, Object3D } from 'three'
 
-import AmbientLightSource from './AmbientLight.js'
-import PointLightSource from './PointLight.js'
-import Suzanne from './Suzanne.js'
+import AmbientLightSource from './AmbientLight'
+import PointLightSource from './PointLight'
+import Suzanne from './Suzanne'
 
 export default class World {
   constructor(options) {
@@ -56,10 +56,10 @@ export default class World {
     }
   }
   setAmbientLight() {
-    this.light = new AmbientLightSource({
+    this.ambientlight = new AmbientLightSource({
       debug: this.debugFolder,
     })
-    this.container.add(this.light.container)
+    this.container.add(this.ambientlight.container)
   }
   setPointLight() {
     this.light = new PointLightSource({

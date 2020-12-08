@@ -1,5 +1,5 @@
 // Steal from https://github.com/brunosimon/folio-2019
-import EventEmitter from './EventEmitter.js'
+import EventEmitter from './EventEmitter'
 
 export default class Time extends EventEmitter {
   constructor() {
