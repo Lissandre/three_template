@@ -44,11 +44,7 @@ export default class Loader extends EventEmitter {
               this.loadComplete(model, loaded)
             },
             (xhr) => {
-              this.currentPercent = Math.floor((xhr.loaded / xhr.total) * 100)
-              if (this.currentPercent === 100) {
-                this.currentPercent = 0
-              }
-              this.trigger('ressourceLoad')
+              this.progress(xhr)
             }
           )
         },
@@ -62,11 +58,7 @@ export default class Loader extends EventEmitter {
               this.loadComplete(model, loaded)
             },
             (xhr) => {
-              this.currentPercent = Math.floor((xhr.loaded / xhr.total) * 100)
-              if (this.currentPercent === 100) {
-                this.currentPercent = 0
-              }
-              this.trigger('ressourceLoad')
+              this.progress(xhr)
             }
           )
         },
@@ -80,16 +72,19 @@ export default class Loader extends EventEmitter {
               this.loadComplete(texture, loaded)
             },
             (xhr) => {
-              this.currentPercent = Math.floor((xhr.loaded / xhr.total) * 100)
-              if (this.currentPercent === 100) {
-                this.currentPercent = 0
-              }
-              this.trigger('ressourceLoad')
+              this.progress(xhr)
             }
           )
         },
       },
     ]
+  }
+  progress(xhr) {
+    this.currentPercent = Math.floor((xhr.loaded / xhr.total) * 100)
+    if (this.currentPercent === 100) {
+      this.currentPercent = 0
+    }
+    this.trigger('ressourceLoad')
   }
   setRessourcesList() {
     // eslint-disable-next-line
