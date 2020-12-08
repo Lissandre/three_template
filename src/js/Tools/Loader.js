@@ -37,6 +37,7 @@ export default class Loader extends EventEmitter {
         type: 'model',
       })
     })
+    // eslint-disable-next-line
     const texturesContext = require.context('@textures', true, /\.(png|jpeg|jpg)$/)
     texturesContext.keys().forEach((key) => {
       const newKey = `${key}`.substring(2)
@@ -96,8 +97,10 @@ export default class Loader extends EventEmitter {
     ressources.forEach((ressource) => {
       this.total++
       const ressourceExtension =
-        ressource.src.substring(ressource.src.lastIndexOf('.') + 1, ressource.src.length) ||
-        ressource.src
+        ressource.src.substring(
+          ressource.src.lastIndexOf('.') + 1,
+          ressource.src.length
+        ) || ressource.src
       if (ressourceExtension) {
         const loader = this.loaders.find(($loader) =>
           $loader.filetype.find(($filetype) => $filetype === ressourceExtension)
@@ -114,7 +117,11 @@ export default class Loader extends EventEmitter {
   }
   loadComplete(ressource, loaded) {
     this.done++
-    this.createNestedObject(this[`${ressource.type}s`], ressource.name.split('/'), loaded)
+    this.createNestedObject(
+      this[`${ressource.type}s`],
+      ressource.name.split('/'),
+      loaded
+    )
     this.trigger('ressourceLoad', [ressource, loaded])
     if (this.total === this.done) {
       this.trigger('ressourcesReady')

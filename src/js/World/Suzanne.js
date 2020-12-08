@@ -13,7 +13,6 @@ export default class Suzanne {
     this.setMovement()
   }
   createSuzanne() {
-
     this.suzanne = this.assets.models.suzanne.scene
     this.container.add(this.suzanne)
   }
