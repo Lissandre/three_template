@@ -4,7 +4,7 @@ export default class Suzanne {
   constructor(options) {
     // Options
     this.time = options.time
-    this.models = options.models
+    this.assets = options.assets
 
     // Set up
     this.container = new Object3D()
@@ -13,7 +13,8 @@ export default class Suzanne {
     this.setMovement()
   }
   createSuzanne() {
-    this.suzanne = this.models.suzanne.scene
+
+    this.suzanne = this.assets.models.suzanne.scene
     this.container.add(this.suzanne)
   }
   setMovement() {
