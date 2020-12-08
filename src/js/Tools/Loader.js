@@ -15,6 +15,7 @@ export default class Loader extends EventEmitter {
     this.ressourcesList = []
     this.total = 0
     this.done = 0
+    this.currentPercent = 0
     this.models = {}
     this.textures = {}
 
@@ -70,25 +71,55 @@ export default class Loader extends EventEmitter {
       {
         filetype: ['gltf', 'glb'],
         action: (model) => {
-          gltfLoader.load(model.src, (loaded) => {
-            this.loadComplete(model, loaded)
-          })
+          gltfLoader.load(
+            model.src,
+            (loaded) => {
+              this.loadComplete(model, loaded)
+            },
+            (xhr) => {
+              this.currentPercent = Math.ceil((xhr.loaded / xhr.total) * 100)
+              if (this.currentPercent === 100) {
+                this.currentPercent = 0
+              }
+              this.trigger('ressourceLoad')
+            }
+          )
         },
       },
       {
         filetype: ['fbx'],
         action: (model) => {
-          fbxLoader.load(model.src, (loaded) => {
-            this.loadComplete(model, loaded)
-          })
+          fbxLoader.load(
+            model.src,
+            (loaded) => {
+              this.loadComplete(model, loaded)
+            },
+            (xhr) => {
+              this.currentPercent = Math.ceil((xhr.loaded / xhr.total) * 100)
+              if (this.currentPercent === 100) {
+                this.currentPercent = 0
+              }
+              this.trigger('ressourceLoad')
+            }
+          )
         },
       },
       {
         filetype: ['png', 'jpg', 'jpeg'],
         action: (texture) => {
-          textureLoader.load(texture.src, (loaded) => {
-            this.loadComplete(texture, loaded)
-          })
+          textureLoader.load(
+            texture.src,
+            (loaded) => {
+              this.loadComplete(texture, loaded)
+            },
+            (xhr) => {
+              this.currentPercent = Math.ceil((xhr.loaded / xhr.total) * 100)
+              if (this.currentPercent === 100) {
+                this.currentPercent = 0
+              }
+              this.trigger('ressourceLoad')
+            }
+          )
         },
       },
     ]
