@@ -4,7 +4,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 
-import { TextureLoader, FontLoader } from 'three'
+import { AudioLoader, FontLoader, TextureLoader } from 'three'
 
 export default class Loader extends EventEmitter {
   constructor() {
@@ -18,6 +18,7 @@ export default class Loader extends EventEmitter {
     this.currentPercent = 0
     this.models = {}
     this.textures = {}
+    this.sounds = {}
     this.fonts = {}
 
     this.setLoaders()
@@ -35,6 +36,7 @@ export default class Loader extends EventEmitter {
 
     const textureLoader = new TextureLoader()
     const fontLoader = new FontLoader()
+    const soundLoader = new AudioLoader()
 
     this.loaders = [
       {
@@ -86,6 +88,20 @@ export default class Loader extends EventEmitter {
             font.src,
             (loaded) => {
               this.loadComplete(font, loaded)
+            },
+            (xhr) => {
+              this.progress(xhr)
+            }
+          )
+        },
+      },
+      {
+        filetype: ['mp3', 'ogg', 'wav'],
+        action: (sound) => {
+          soundLoader.load(
+            sound.src,
+            (loaded) => {
+              this.loadComplete(sound, loaded)
             },
             (xhr) => {
               this.progress(xhr)
@@ -146,6 +162,21 @@ export default class Loader extends EventEmitter {
         ),
         src: fontSrc,
         type: 'font',
+      })
+    })
+    // eslint-disable-next-line
+    const soundsContext = require.context('@sounds', true, /\.(mp3|ogg|wav)$/)
+    soundsContext.keys().forEach((key) => {
+      const newKey = `${key}`.substring(2)
+      // eslint-disable-next-line
+      const soundSrc = require('../../sounds/' + newKey)
+      this.ressourcesList.push({
+        name: key.substring(
+          2,
+          key.length - (key.length - newKey.lastIndexOf('.') - 2)
+        ),
+        src: soundSrc.default,
+        type: 'sound',
       })
     })
     this.loadRessources(this.ressourcesList)
