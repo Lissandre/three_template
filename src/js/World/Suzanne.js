@@ -9,7 +9,6 @@ export default class Suzanne {
     // Set up
     this.container = new Object3D()
     this.container.name = 'Suzanne'
-    console.log(this.assets)
 
     this.createSuzanne()
     this.setMovement()
