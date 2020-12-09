@@ -4,7 +4,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 
-import { TextureLoader } from 'three'
+import { TextureLoader, FontLoader } from 'three'
 
 export default class Loader extends EventEmitter {
   constructor() {
@@ -18,6 +18,7 @@ export default class Loader extends EventEmitter {
     this.currentPercent = 0
     this.models = {}
     this.textures = {}
+    this.fonts = {}
 
     this.setLoaders()
     this.setRessourcesList()
@@ -33,6 +34,7 @@ export default class Loader extends EventEmitter {
     const fbxLoader = new FBXLoader()
 
     const textureLoader = new TextureLoader()
+    const fontLoader = new FontLoader()
 
     this.loaders = [
       {
@@ -70,6 +72,20 @@ export default class Loader extends EventEmitter {
             texture.src,
             (loaded) => {
               this.loadComplete(texture, loaded)
+            },
+            (xhr) => {
+              this.progress(xhr)
+            }
+          )
+        },
+      },
+      {
+        filetype: ['json'],
+        action: (font) => {
+          fontLoader.load(
+            font.src,
+            (loaded) => {
+              this.loadComplete(font, loaded)
             },
             (xhr) => {
               this.progress(xhr)
@@ -115,6 +131,21 @@ export default class Loader extends EventEmitter {
         ),
         src: textureSrc.default,
         type: 'texture',
+      })
+    })
+    // eslint-disable-next-line
+    const fontsContext = require.context('@fonts', true, /\.(json)$/)
+    fontsContext.keys().forEach((key) => {
+      const newKey = `${key}`.substring(2)
+      // eslint-disable-next-line
+      const fontSrc = 'assets/fonts/' + newKey
+      this.ressourcesList.push({
+        name: key.substring(
+          2,
+          key.length - (key.length - newKey.lastIndexOf('.') - 2)
+        ),
+        src: fontSrc,
+        type: 'font',
       })
     })
     this.loadRessources(this.ressourcesList)

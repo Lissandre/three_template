@@ -26,6 +26,7 @@ module.exports = {
     new CopyWebpackPlugin({ 
       patterns: [
         { from: 'static', to: '' },
+        { from: '*.json', to: 'assets/fonts', context: "src/fonts", noErrorOnMissing: true },
         { from: 'node_modules/three/examples/js/libs/draco/', to: './draco' }
       ]
     }),
