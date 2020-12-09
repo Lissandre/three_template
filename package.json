@@ -1,6 +1,6 @@
 {
   "name": "three_template",
-  "version": "1.4.1",
+  "version": "2.0.0",
   "description": "Three template",
   "main": "index.js",
   "dependencies": {},
