@@ -112,11 +112,13 @@ export default class Loader extends EventEmitter {
     ]
   }
   progress(xhr) {
-    this.currentPercent = Math.floor((xhr.loaded / xhr.total) * 100)
-    if (this.currentPercent === 100) {
-      this.currentPercent = 0
+      if (xhr.lengthComputable) {
+      this.currentPercent = Math.floor((xhr.loaded / xhr.total) * 100)
+      if (this.currentPercent === 100) {
+        this.currentPercent = 0
+      }
+      this.trigger('ressourceLoad')
     }
-    this.trigger('ressourceLoad')
   }
   setRessourcesList() {
     // eslint-disable-next-line
