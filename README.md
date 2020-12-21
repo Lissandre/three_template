@@ -48,6 +48,3 @@ $ npm run build
 
 ## Template link
 [https://github.com/Lissandre/three_template](https://github.com/Lissandre/three_template)
-
-## Alternative
-For a structure-only version of this template: [https://github.com/Lissandre/three_skeleton](https://github.com/Lissandre/three_skeleton)
