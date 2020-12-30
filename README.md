@@ -38,7 +38,7 @@ Go to your-url/#debug
 - babel
 - stylus
 - dat.GUI
-- automatic models / textures import
+- automatic models / textures / sounds / fonts.json import
 
 ## Deployment
 Build the current application (default output in `dist/`).
