@@ -1,4 +1,4 @@
-import { Scene, WebGLRenderer } from 'three'
+import { Scene, sRGBEncoding, WebGLRenderer } from 'three'
 import * as dat from 'dat.gui'
 
 import Sizes from '@tools/Sizes'
@@ -31,7 +31,10 @@ export default class App {
       canvas: this.canvas,
       alpha: true,
       antialias: true,
+      powerPreference: 'high-performance',
     })
+    this.renderer.outputEncoding = sRGBEncoding
+    this.renderer.gammaFactor = 2.2
     // Set background color
     this.renderer.setClearColor(0x212121, 1)
     // Set renderer pixel ratio & sizes
@@ -44,7 +47,7 @@ export default class App {
         this.sizes.viewport.height
       )
     })
-    // Set RequestAnimationFrame with 60ips
+    // Set RequestAnimationFrame with 60fps
     this.time.on('tick', () => {
       this.renderer.render(this.scene, this.camera.camera)
     })
@@ -71,7 +74,7 @@ export default class App {
   }
   setConfig() {
     if (window.location.hash === '#debug') {
-      this.debug = new dat.GUI({ width: 420 })
+      this.debug = new dat.GUI({ width: 450 })
     }
   }
 }
