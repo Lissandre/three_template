@@ -2,7 +2,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const webpackMerge = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const commonConfiguration = require('./webpack.common.js')
-const path = require('path')
 
 module.exports = webpackMerge.merge(
   commonConfiguration,
