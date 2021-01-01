@@ -32,7 +32,7 @@
     "stylus-loader": "^4.3.1",
     "three": "^0.124.0",
     "webpack": "^5.11.1",
-    "webpack-cli": "^4.3.0",
+    "webpack-cli": "^4.3.1",
     "webpack-dev-server": "^3.11.1",
     "webpack-merge": "^5.7.3"
   },
