@@ -49,8 +49,22 @@ export default class App {
     })
     // Set RequestAnimationFrame with 60fps
     this.time.on('tick', () => {
-      this.renderer.render(this.scene, this.camera.camera)
+      // When tab is not visible (tab is not active or window is minimized), browser stops requesting animation frames. Thus, this does not work
+      // if the window is only in the background without focus (for example, if you select another window without minimizing the browser one), 
+      // which might cause some performance or batteries issues when testing on multiple browsers
+      if (!(this.renderOnBlur?.activated && !document.hasFocus() ) ) {
+        this.renderer.render(this.scene, this.camera.camera)
+      }
     })
+
+    if (this.debug) {
+      this.renderOnBlur = { activated: true }
+      const folder = this.debug.addFolder('Renderer')
+      folder.open()
+      folder
+        .add(this.renderOnBlur, 'activated')
+        .name('Render on window blur')
+    }
   }
   setCamera() {
     // Create camera instance
