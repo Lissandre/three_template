@@ -3,8 +3,9 @@ import EventEmitter from './EventEmitter'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 
-import { AudioLoader, FontLoader, TextureLoader } from 'three'
+import { AudioLoader, TextureLoader } from 'three'
 
 export default class Loader extends EventEmitter {
   constructor() {

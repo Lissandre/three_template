@@ -11,41 +11,43 @@ module.exports = webpackMerge.merge(
       new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
-      host: '0.0.0.0',
-      useLocalIp: true,
-      contentBase: './dist',
+      // host: '0.0.0.0',
+      static: './dist',
       open: true,
       hot: true,
-      overlay: {
-        warnings: true,
-        errors: true
+      client: {
+        progress: true,
+        overlay: {
+          warnings: true,
+          errors: true
+        }
+      }
+    },
+    stats: {
+      assets: false,
+      builtAt: true,
+      children: false,
+      chunks: false,
+      chunkGroups: false,
+      chunkModules: false,
+      chunkOrigins: false,
+      colors: {
+        green: '\u001b[32m',
       },
-      stats: {
-        assets: false,
-        builtAt: true,
-        children: false,
-        chunks: false,
-        chunkGroups: false,
-        chunkModules: false,
-        chunkOrigins: false,
-        colors: {
-          green: '\u001b[32m',
-        },
-        depth: false,
-        entrypoints: false,
-        env: false,
-        hash: false,
-        outputPath: false,
-        publicPath: false,
-        timings: false,
-        source: false,
-        reasons: false,
-        modules: false,
-        providedExports: false,
-        logging: 'info',
-        loggingTrace: false,
-        version: false,
-      },
+      depth: false,
+      entrypoints: false,
+      env: false,
+      hash: false,
+      outputPath: false,
+      publicPath: false,
+      timings: false,
+      source: false,
+      reasons: false,
+      modules: false,
+      providedExports: false,
+      logging: 'info',
+      loggingTrace: false,
+      version: false,
     },
     module: {
       rules: [

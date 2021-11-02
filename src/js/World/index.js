@@ -17,8 +17,10 @@ export default class World {
 
     if (this.debug) {
       this.container.add(new AxesHelper(5))
-      this.debugFolder = this.debug.addFolder('World')
-      this.debugFolder.open()
+      this.debugFolder = this.debug.addFolder({
+        title: 'World',
+        expanded: true
+      })
     }
 
     this.setLoader()

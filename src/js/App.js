@@ -1,5 +1,5 @@
 import { Scene, sRGBEncoding, WebGLRenderer } from 'three'
-import * as dat from 'dat.gui'
+import { Pane } from 'tweakpane'
 
 import Sizes from '@tools/Sizes'
 import Time from '@tools/Time'
@@ -59,11 +59,14 @@ export default class App {
 
     if (this.debug) {
       this.renderOnBlur = { activated: true }
-      const folder = this.debug.addFolder('Renderer')
-      folder.open()
+      const folder = this.debug.addFolder({
+        title: 'Renderer',
+        expanded: true
+      })
       folder
-        .add(this.renderOnBlur, 'activated')
-        .name('Render on window blur')
+        .addInput(this.renderOnBlur, 'activated', {
+          label: 'Render on window blur'
+        })
     }
   }
   setCamera() {
@@ -88,7 +91,7 @@ export default class App {
   }
   setConfig() {
     if (window.location.hash === '#debug') {
-      this.debug = new dat.GUI({ width: 450 })
+      this.debug = new Pane()
     }
   }
 }

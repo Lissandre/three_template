@@ -21,12 +21,13 @@ export default class AmbientLightSource {
     this.container.add(this.light)
   }
   setDebug() {
-    this.debugFolder = this.debug.addFolder('Ambient Light')
-    this.debugFolder.open()
+    this.debugFolder = this.debug.addFolder({
+      title: 'Ambient Light',
+      expanded: true
+    })
     this.debugFolder
-      .addColor(this.params, 'color')
-      .name('Color')
-      .onChange(() => {
+      .addInput(this.params, 'color')
+      .on('change', () => {
         this.light.color = new Color(this.params.color)
       })
   }

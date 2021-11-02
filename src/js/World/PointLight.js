@@ -33,32 +33,33 @@ export default class PointLightSource {
   }
   setDebug() {
     // Color debug
-    this.debugFolder = this.debug.addFolder('Point Light')
-    this.debugFolder.open()
+    this.debugFolder = this.debug.addFolder({
+      title: 'Point Light',
+      expanded: true
+    })
     this.debugFolder
-      .addColor(this.params, 'color')
-      .name('Color')
-      .onChange(() => {
+      .addInput(this.params, 'color')
+      .on('change', () => {
         this.light.color = new Color(this.params.color)
       })
     //Position debug
     this.debugFolder
-      .add(this.light.position, 'x')
-      .step(0.1)
-      .min(-5)
-      .max(5)
-      .name('Position X')
+      .addInput(this.light.position, 'x', {
+        min: -5,
+        max: 5,
+        step: 0.1
+      })
     this.debugFolder
-      .add(this.light.position, 'y')
-      .step(0.1)
-      .min(-5)
-      .max(5)
-      .name('Position Y')
+      .addInput(this.light.position, 'y', {
+        min: -5,
+        max: 5,
+        step: 0.1
+      })
     this.debugFolder
-      .add(this.light.position, 'z')
-      .step(0.1)
-      .min(-5)
-      .max(5)
-      .name('Position Z')
+      .addInput(this.light.position, 'z', {
+        min: -5,
+        max: 5,
+        step: 0.1
+      })
   }
 }
