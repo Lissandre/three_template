@@ -30,7 +30,7 @@
     "stylus-loader": "^6.2.0",
     "three": "^0.134.0",
     "tweakpane": "^3.0.5",
-    "webpack": "^5.61.0",
+    "webpack": "^5.62.1",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0",
     "webpack-merge": "^5.8.0"
