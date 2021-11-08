@@ -60,6 +60,7 @@ module.exports = {
       {
         test: /\.(html)$/,
         use: ['html-loader'],
+        options: { sources : false }
       },
       {
         test: /\.(js)$/,
