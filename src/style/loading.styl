@@ -1,0 +1,36 @@
+.loaderScreen
+  position absolute
+  top 0
+  width 100%
+  height 100%
+  background-color #000
+  display flex
+  flex-direction column
+  justify-content center
+  align-items center
+  transition 0.55s opacity ease-out
+
+  &__load
+    padding 0
+    color #fff
+    font-family Montserrat
+    font-weight 200
+    user-select none
+
+  &__progressBar
+    width 100%
+    position absolute
+    background-color #232323
+    display flex
+    &:first-child
+      top 0
+      justify-content flex-start
+    &:last-child
+      bottom 0
+      justify-content flex-end
+
+  &__progress
+    width 0px
+    height 4px
+    background-color #fff
+    transition 0.32s ease-out width

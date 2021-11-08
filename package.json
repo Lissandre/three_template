@@ -1,0 +1,58 @@
+{
+  "name": "three_template",
+  "version": "3.0.1",
+  "description": "Three template",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@tweakpane/plugin-camerakit": "^0.2.1",
+    "@tweakpane/plugin-essentials": "^0.1.4",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "css-loader": "^6.5.0",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "file-loader": "^6.2.0",
+    "glslify-loader": "^2.0.0",
+    "html-loader": "^3.0.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.4.3",
+    "prettier": "^2.4.1",
+    "raw-loader": "^4.0.2",
+    "style-loader": "^3.3.1",
+    "stylus": "^0.55.0",
+    "stylus-loader": "^6.2.0",
+    "three": "^0.134.0",
+    "tweakpane": "^3.0.5",
+    "webpack": "^5.61.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.4.0",
+    "webpack-merge": "^5.8.0"
+  },
+  "scripts": {
+    "build": "webpack --config ./bundler/webpack.prod.js",
+    "watch": "webpack --watch --config ./bundler/webpack.prod.js",
+    "dev": "webpack serve --config ./bundler/webpack.dev.js --client-logging warn",
+    "lint": "eslint --ignore-path .eslintignore .",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lissandre Pasdeloup",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lissandre/three_template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lissandre/three_template/issues"
+  },
+  "homepage": "https://github.com/Lissandre/three_template#readme"
+}
