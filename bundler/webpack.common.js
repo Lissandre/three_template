@@ -59,8 +59,12 @@ module.exports = {
       },
       {
         test: /\.(html)$/,
-        use: ['html-loader'],
-        options: { sources : false }
+        use: [
+          {
+            loader: 'html-loader',
+            options: { sources : false }
+          }
+        ],
       },
       {
         test: /\.(js)$/,
