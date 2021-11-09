@@ -1,4 +1,4 @@
-import { Object3D } from 'three'
+import { MeshLambertMaterial, Object3D } from 'three'
 
 export default class Suzanne {
   constructor(options) {
@@ -15,6 +15,7 @@ export default class Suzanne {
   }
   createSuzanne() {
     this.suzanne = this.assets.models.suzanne.scene
+    this.suzanne.children[0].material.map = this.assets.textures.suzanne_texture
     this.container.add(this.suzanne)
   }
   setMovement() {

@@ -22,8 +22,7 @@ export default class PointLightSource {
     }
   }
   createPointLight() {
-    this.light = new PointLight(this.params.color)
-    this.light.castShadow = true
+    this.light = new PointLight(this.params.color, 2, 100)
     this.light.position.set(
       this.params.positionX,
       this.params.positionY,
