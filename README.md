@@ -37,7 +37,7 @@ Go to your-url/#debug
 - prettier
 - babel
 - stylus
-- dat.GUI
+- Tweakpane
 - automatic models / textures / sounds / fonts.json import
 
 ## Deployment
