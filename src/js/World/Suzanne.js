@@ -1,9 +1,9 @@
-import { MeshLambertMaterial, Object3D } from 'three'
+import { Object3D } from 'three'
+import gsap from 'gsap'
 
 export default class Suzanne {
   constructor(options) {
     // Options
-    this.time = options.time
     this.assets = options.assets
 
     // Set up
@@ -11,16 +11,14 @@ export default class Suzanne {
     this.container.name = 'Suzanne'
 
     this.createSuzanne()
-    this.setMovement()
+    gsap.ticker.add((time, deltaTime) => {this.setMovement(time, deltaTime)})
   }
   createSuzanne() {
     this.suzanne = this.assets.models.suzanne.scene
     this.suzanne.children[0].material.map = this.assets.textures.suzanne_texture
     this.container.add(this.suzanne)
   }
-  setMovement() {
-    this.time.on('tick', () => {
-      this.suzanne.rotation.y += 0.001 * this.time.delta
-    })
+  setMovement(time, deltaTime) {
+    this.suzanne.rotation.y += 0.001 * deltaTime
   }
 }

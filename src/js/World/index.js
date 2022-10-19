@@ -1,13 +1,11 @@
 import { AxesHelper, Object3D } from 'three'
 
-import AmbientLightSource from './AmbientLight'
 import PointLightSource from './PointLight'
 import Suzanne from './Suzanne'
 
 export default class World {
   constructor(options) {
     // Set options
-    this.time = options.time
     this.debug = options.debug
     this.assets = options.assets
 
@@ -26,7 +24,6 @@ export default class World {
     this.setLoader()
   }
   init() {
-    this.setAmbientLight()
     this.setPointLight()
     this.setSuzanne()
   }
@@ -34,12 +31,6 @@ export default class World {
     this.assets.on('ressourcesReady', () => {
       this.init()
     })
-  }
-  setAmbientLight() {
-    this.ambientlight = new AmbientLightSource({
-      debug: this.debugFolder,
-    })
-    this.container.add(this.ambientlight.container)
   }
   setPointLight() {
     this.light = new PointLightSource({
@@ -49,7 +40,6 @@ export default class World {
   }
   setSuzanne() {
     this.suzanne = new Suzanne({
-      time: this.time,
       assets: this.assets,
     })
     this.container.add(this.suzanne.container)

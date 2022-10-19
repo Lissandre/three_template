@@ -3,11 +3,13 @@
   "version": "3.0.1",
   "description": "Three template",
   "main": "index.js",
+  "dependencies": {
+    "gsap": "^3.11.3",
+    "three": "^0.134.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
-    "@tweakpane/plugin-camerakit": "^0.2.1",
-    "@tweakpane/plugin-essentials": "^0.1.4",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
@@ -30,7 +32,6 @@
     "style-loader": "^3.3.1",
     "stylus": "^0.55.0",
     "stylus-loader": "^6.2.0",
-    "three": "^0.134.0",
     "tweakpane": "^3.0.5",
     "webpack": "^5.61.0",
     "webpack-cli": "^4.9.1",

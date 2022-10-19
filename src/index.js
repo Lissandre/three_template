@@ -1,10 +1,8 @@
 // IMPORT TOOLS
-import Sizes from '@tools/Sizes'
-import Time from '@tools/Time'
 import Assets from '@tools/Loader'
 // IMPORT APP
 import '@style/style.styl'
-import App from '@js/App'
+import AppManager from '@js/AppManager'
 
 // LOADER TEMPLATE
 const loader = `
@@ -19,17 +17,11 @@ const loader = `
 </div>
 `
 // SET TOOLS
-const time = new Time()
-const sizes = new Sizes()
 const assets = new Assets({
   template: loader
 })
 
-
 // SET APP
-new App({
-  canvas: document.querySelector('#_canvas'),
-  time: time,
-  sizes: sizes,
+new AppManager({
   assets: assets,
-})
+}).setup()
